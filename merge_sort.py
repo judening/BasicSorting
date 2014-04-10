@@ -1,10 +1,32 @@
-def conquer(start,mid,end,unsorted_array):
+def merge(left, right):
+    result = []
+    left_index, right_index = 0, 0
+    while left_index < len(left) and right_index < len(right):
+        
+        if left[left_index] <= right[right_index]:
+            result.append(left[left_index])
+            left_index +=1
+        else:
+            result.append(right[right_index])
+            right_index +=1
     
-
-def merge_sort(start,end,unsorted_array):    
-    if(end-start) < 2:
-        return;
-    mid = (start+end)/2
-    merge_sort(start,mid,unsorted_array)
-    merge_sort(mid,end,unsorted_array)
-    conquer(start,mid,end,unsorted_array)
+    if left:
+        result.extend(left[left_index:])
+    if right:
+        result.extend(right[right_index:])
+        
+    return result
+    
+def merge_sort(m):
+    if len(m) <=1:
+        return m
+        
+    middle = len(m)/2
+    
+    left = m[:middle]
+    right = m[middle:]
+    
+    left = merge_sort(left)
+    right = merge_sort(right)
+    
+    return merge(left,right)
