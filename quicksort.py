@@ -1,12 +1,12 @@
 import random
 
-def quick_sort(teh_list,split):
-    if len(teh_list) <=1:
+def quick_sort(teh_list,left,right):
+    if (right-left) <=0:
          return
     else:
-        start = 0
-        end = split
-        pivot = random.ranint(start,end)
+        start = left
+        end = right
+        pivot = (right+left)/2
         while start < end:
             
             while(teh_list[start] < teh_list[pivot]):
@@ -19,6 +19,10 @@ def quick_sort(teh_list,split):
                 teh_list[start] = teh_list[end]
                 teh_list[end] = temp
                 
-        quick_sort(teh_list[])
-        quick_sort(teh_list[pivot:])
+        quick_sort(teh_list,left,pivot)
+        quick_sort(teh_list,pivot+1,right)
+
+def quicksort(teh_list):
+    quick_sort(teh_list,0,len(teh_list)-1)
+    print teh_list    
         
