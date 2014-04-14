@@ -6,20 +6,18 @@ def quick_sort(teh_list,left,right):
     else:
         start = left
         end = right
-        pivot = (right+left)/2
+        pivot = start
         while start < end:
             
-            while(teh_list[start] < teh_list[pivot]):
+            while(teh_list[start] <= teh_list[pivot]):
                 start+=1
             while(teh_list[end] > teh_list[pivot]):
                 end-=1
                 
-            if start< end:
-                temp = teh_list[start]
-                teh_list[start] = teh_list[end]
-                teh_list[end] = temp
+            if start < end:
+                teh_list[start],teh_list[end] = teh_list[end] , teh_list[start]
                 
-        quick_sort(teh_list,left,pivot)
+        quick_sort(teh_list,left,pivot-1)
         quick_sort(teh_list,pivot+1,right)
 
 def quicksort(teh_list):
