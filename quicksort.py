@@ -14,6 +14,9 @@ def quick_sort(teh_list,left,right):
                 
             if start < end:
                 teh_list[start],teh_list[end] = teh_list[end] , teh_list[start]
+        //After the while loop, the 'end' will be the split
+        //Since we are not changing the value of 'pivot', the split is actually the pivot
+        //So we have to do the swap
         teh_list[pivot],teh_list[end] = teh_list[end], teh_list[pivot]        
         quick_sort(teh_list,left,end-1)
         quick_sort(teh_list,end+1,right)
